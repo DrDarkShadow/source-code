@@ -20,6 +20,16 @@ int stringLength(char str[]) {
     return length;
 }
 
+// Function to generate a random number between min and max (inclusive)
+int getRandom(int min, int max) {
+    if (min > max) {
+        int temp = min;
+        min = max;
+        max = temp;
+    }
+    return min + rand() % (max - min + 1);
+}
+
 // Function to check if a number is prime
 bool isPrime(int n) {
     if (n <= 1)
