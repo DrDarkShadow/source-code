@@ -11,6 +11,17 @@ int findMax(int arr[], int size) {
     return max;
 }
 
+// Function to find the minimum element in an array
+int findMin(int arr[], int size) {
+    int min = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < min)
+            min = arr[i];
+    }
+    return min;
+}
+
+
 // Function to calculate the average of elements in an integer array
 double calculateAverage(int arr[], int size) {
     int sum = 0;
