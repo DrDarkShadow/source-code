@@ -11,6 +11,16 @@ int findMax(int arr[], int size) {
     return max;
 }
 
+// Function to calculate the average of elements in an integer array
+double calculateAverage(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return (double)sum / size;
+}
+
+
 // Function to calculate the length of a string manually
 int stringLength(char str[]) {
     int length = 0;
