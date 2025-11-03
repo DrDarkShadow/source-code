@@ -11,7 +11,22 @@ def choose_random_item(items: List[str]) -> str:
         raise ValueError("items must not be empty")
     return random.choice(items)
 
+def fibonacci(n: int) -> int:
+    """Compute the nth Fibonacci number using an iterative approach.
 
+    Parameters:
+        n: Index of the Fibonacci number (0-indexed).
+
+    Returns:
+        The nth Fibonacci value.
+    """
+    if n < 0:
+        raise ValueError("n must be non-negative")
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+    
 def shuffle_copy(items: List[int]) -> List[int]:
     """Return a shuffled copy of the given list without mutating the input.
 
