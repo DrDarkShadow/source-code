@@ -21,6 +21,19 @@ def generate_random_integers(count: int, start: int = 0, end: int = 100) -> List
         start, end = end, start
     return [random.randint(start, end) for _ in range(count)]
 
+def shuffle_copy(items: List[int]) -> List[int]:
+    """Return a shuffled copy of the given list without mutating the input.
+
+    Parameters:
+        items: A list of integers.
+
+    Returns:
+        A new list containing the same integers in random order.
+    """
+    copy = list(items)
+    random.shuffle(copy)
+    return copy
+    
 def fibonacci(n: int) -> int:
     """Compute the nth Fibonacci number using an iterative approach.
 
