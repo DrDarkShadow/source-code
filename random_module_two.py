@@ -11,6 +11,11 @@ def choose_random_item(items: List[str]) -> str:
         raise ValueError("items must not be empty")
     return random.choice(items)
 
+def second_largest(nums):
+    unique_nums = list(set(nums))
+    unique_nums.sort()
+    return unique_nums[-2] if len(unique_nums) >= 2 else None
+
 def count_even_odd(numbers):
     even = 0
     odd = 0
