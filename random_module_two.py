@@ -11,6 +11,23 @@ def choose_random_item(items: List[str]) -> str:
         raise ValueError("items must not be empty")
     return random.choice(items)
 
+def generate_random_integers(count: int, start: int = 0, end: int = 100) -> List[int]:
+    """Return a list of pseudo-random integers.
+
+    Parameters:
+        count: Number of integers to generate.
+        start: Inclusive lower bound for values.
+        end: Inclusive upper bound for values.
+
+    Returns:
+        A list containing `count` integers sampled uniformly in [start, end].
+    """
+    if count < 0:
+        raise ValueError("count must be non-negative")
+    if start > end:
+        start, end = end, start
+    return [random.randint(start, end) for _ in range(count)]
+
 def shuffle_copy(items: List[int]) -> List[int]:
     """Return a shuffled copy of the given list without mutating the input.
 
