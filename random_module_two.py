@@ -11,6 +11,16 @@ def choose_random_item(items: List[str]) -> str:
         raise ValueError("items must not be empty")
     return random.choice(items)
 
+def count_even_odd(numbers):
+    even = 0
+    odd = 0
+    for num in numbers:
+        if num % 2 == 0:
+            even += 1
+        else:
+            odd += 1
+    return even, odd
+
 def fibonacci(n: int) -> int:
     """Compute the nth Fibonacci number using an iterative approach.
 
