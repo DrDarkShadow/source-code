@@ -25,3 +25,12 @@ def binary_search(arr, target):
 
     return -1   # not found
 
+def bubble_sort(arr):
+    nums = arr[:]   # copy so we don't modify original
+    n = len(nums)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if nums[j] > nums[j + 1]:
+                nums[j], nums[j + 1] = nums[j + 1], nums[j]
+    return nums
+
