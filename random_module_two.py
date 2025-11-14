@@ -34,3 +34,9 @@ def bubble_sort(arr):
                 nums[j], nums[j + 1] = nums[j + 1], nums[j]
     return nums
 
+def frequency_counter(lst):
+    freq = {}
+    for item in lst:
+        freq[item] = freq.get(item, 0) + 1
+    return freq
+
