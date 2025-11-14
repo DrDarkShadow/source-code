@@ -18,3 +18,8 @@ def second_largest(lst):
     if second is None:
         raise ValueError("All elements are equal")
     return second
+
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
