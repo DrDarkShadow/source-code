@@ -18,17 +18,3 @@ def second_largest(lst):
     if second is None:
         raise ValueError("All elements are equal")
     return second
-
-def gcd(a, b):
-    while b != 0:
-        a, b = b, a % b
-    return a
-
-def bubble_sort(arr):
-    nums = arr[:]   # copy so we don't modify original
-    n = len(nums)
-    for i in range(n):
-        for j in range(0, n - i - 1):
-            if nums[j] > nums[j + 1]:
-                nums[j], nums[j + 1] = nums[j + 1], nums[j]
-    return nums
