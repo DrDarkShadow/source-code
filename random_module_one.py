@@ -5,10 +5,11 @@ from typing import List
 
 
 def num(a,b):
-
+    
 
     
     return a+b
+    generate_random_integers(5,8,121)
     
 def generate_random_integers(count: int, start: int = 0, end: int = 100) -> List[int]:
     """Return a list of pseudo-random integers.
