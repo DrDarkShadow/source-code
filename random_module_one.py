@@ -28,18 +28,30 @@ def generate_random_integers(count: int, start: int = 0, end: int = 100) -> List
         start, end = end, start
     return [random.randint(start, end) for _ in range(count)]
 
-def choose_random_item(items: List[str]) -> str:
-    """Choose a single random item from a non-empty sequence.
-
-    Parameters:
-        items: A list of strings to choose from.
-
-    Returns:
-        A single string chosen uniformly at random.
+def tricky_eval(x):
     """
-    if not items:
-        raise ValueError("items must not be empty")
-    return random.choice(items)
+    Short complex function for parser testing:
+    - Recursion
+    - Lambda closures
+    - Type branching
+    - Exception paths
+    """
+    if x is None:
+        return None
+
+    if isinstance(x, int):
+        if x < 0:
+            raise ValueError("Negative detected")
+        return x * tricky_eval(x - 1) if x > 1 else 1  # factorial logic
+
+    if isinstance(x, str):
+        try:
+            return tricky_eval(int(x))  # recursive conversion
+        except Exception:
+            return (lambda s: s[::-1])(x)  # closure reversing string
+
+    return repr(x)  # fallback for weird types
+
 
 def chaotic_transform(input_data, memo=None, depth=0):
     """
