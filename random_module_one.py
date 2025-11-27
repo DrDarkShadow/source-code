@@ -41,18 +41,76 @@ def choose_random_item(items: List[str]) -> str:
         raise ValueError("items must not be empty")
     return random.choice(items)
 
-def shuffle_copy(items: List[int]) -> List[int]:
-    """Return a shuffled copy of the given list without mutating the input.
-
-    Parameters:
-        items: A list of integers.
-
-    Returns:
-        A new list containing the same integers in random order.
+def chaotic_transform(input_data, memo=None, depth=0):
     """
-    copy = list(items)
-    random.shuffle(copy)
-    return copy
+    Extremely messy function for parser testing.
+    Performs:
+    - Recursion
+    - Multithreading
+    - Random branching and exceptions
+    - Mixed-type processing
+    - State mutation through memo
+    """
+    if memo is None:
+        memo = {}
+
+    print(f"Depth {depth} | Input: {input_data}")  # I/O behavior
+
+    # Stop condition with memo cache
+    if isinstance(input_data, int):
+        if input_data in memo:
+            return memo[input_data]
+
+        if input_data < 0:
+            raise ValueError("Negative number encountered!")
+
+        # Recursion to compute pseudo-fibonacci-like result
+        if input_data in (0, 1):
+            memo[input_data] = input_data
+        else:
+            memo[input_data] = (
+                chaotic_transform(input_data - 1, memo, depth + 1) +
+                chaotic_transform(input_data - 2, memo, depth + 1)
+            )
+        return memo[input_data]
+
+    elif isinstance(input_data, list):
+        # Thread worker to mutate list concurrently (nasty!)
+        def worker(lst):
+            for i in range(len(lst)):
+                if isinstance(lst[i], int):
+                    lst[i] *= 2
+                elif isinstance(lst[i], str) and lst[i].isdigit():
+                    lst[i] = int(lst[i]) + 5
+                else:
+                    lst[i] = None
+
+        t = threading.Thread(target=worker, args=(input_data,))
+        t.start()
+        t.join()
+
+        # Random chaos — recurse on results
+        return [chaotic_transform(x, memo, depth + 1) if isinstance(x, int)
+                else x for x in input_data]
+
+    elif isinstance(input_data, str):
+        # Random chance of failure
+        if random.random() > 0.8:
+            raise TypeError("Random string processing error!")
+
+        stripped = input_data.strip().lower()
+        if stripped.isdigit():
+            return chaotic_transform(int(stripped), memo, depth + 1)
+        return stripped[::-1]  # reverse string
+
+    elif input_data is None:
+        print("Encountered None — skipping")
+        time.sleep(0.01)
+        return None
+
+    else:
+        # Unknown type fallback
+        return repr(input_data)
     
 def fibonacci(n: int) -> int:
     """Compute the nth Fibonacci number using an iterative approach.
