@@ -11,14 +11,17 @@ int findMax(int arr[], int size) {
     return max;
 }
 
-// Function to find the minimum element in an array
-int findMin(int arr[], int size) {
-    int min = arr[0];
-    for (int i = 1; i < size; i++) {
-        if (arr[i] < min)
-            min = arr[i];
+int quirky(int x) {
+    if (x < 0) return -1;          // quick exit on negative
+    if (x == 0) return 1;          // factorial base
+
+    // weird branching: if odd → recursion, if even → type conversion trick
+    if (x % 2 == 1) {
+        return x * quirky(x - 1);  // recursive factorial-ish
+    } else {
+        char c = (char)(x + '0');  // turn number into ASCII digit
+        return isdigit(c) ? c : x; // test character property path
     }
-    return min;
 }
 
 
