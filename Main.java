@@ -8,6 +8,10 @@ public class Main {
         return a + b;
     }
 
+    public static int sub(int a, int b) {
+    return a - b;
+}
+
     // Function to find factorial of a number
     public static int factorial(int n) {
         if (n <= 1)
